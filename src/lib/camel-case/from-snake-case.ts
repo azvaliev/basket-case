@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /**
   * Convert T from snake_case to camelCase
   * */
@@ -6,7 +5,7 @@ export type SnakeToCamelCase<T extends string> = InnerSnakeToCamelCase<T>;
 /**
   * Convert all properties of T from snake_case to camelCase
 * */
-export type AllPropertiesSnakeToCamelCase<T extends Record<PropertyKey, unknown>> = {
+type AllPropertiesSnakeToCamelCase<T extends Record<PropertyKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? SnakeToCamelCase<K>
@@ -45,7 +44,7 @@ export function snakeToCamelCase<T extends string | Record<PropertyKey, unknown>
     }, {} as Record<PropertyKey, unknown>);
 }
 
-function strSnakeToCamelCase<T extends string>(target: T): SnakeToCamelCase<T> {
+export function strSnakeToCamelCase<T extends string>(target: T): SnakeToCamelCase<T> {
   let camelCasedTarget = '';
   let idx = 0;
 
