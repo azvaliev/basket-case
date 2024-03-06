@@ -1,3 +1,5 @@
+import { convertAllObjProps } from '../common/convert-obj';
+
 export type PascalToCamelCase<T extends string> = Uncapitalize<T>;
 
 type AllPropertiesPascalToCamelCase<T extends Record<PropertyKey, unknown>> = {
@@ -33,22 +35,17 @@ export function pascalToCamelCase<T extends string | Record<PropertyKey, unknown
 
   const targetRecord = target as Exclude<T, string>;
 
-  return Object.keys(targetRecord)
-    .reduce((camelCasedTarget, key) => {
-      if (typeof key !== 'string') {
-        camelCasedTarget[key] = targetRecord[key];
-        return camelCasedTarget;
-      }
-
-      const camelCasedKey = strPascalToCamelCase(key);
-      camelCasedTarget[camelCasedKey] = targetRecord[key];
-
-      return camelCasedTarget;
-    }, {} as Record<PropertyKey, unknown>);
+  return convertAllObjProps<
+    typeof targetRecord,
+  AllPropertiesPascalToCamelCase<typeof targetRecord>
+  >(
+    targetRecord,
+    (key) => strPascalToCamelCase(key),
+  );
 }
 
 function strPascalToCamelCase<T extends string>(target: T): PascalToCamelCase<T> {
   return (
-    target.charAt(0).toUpperCase() + target.slice(1)
+    target.charAt(0).toLowerCase() + target.slice(1)
   ) as PascalToCamelCase<T>;
 }

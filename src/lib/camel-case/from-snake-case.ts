@@ -1,3 +1,5 @@
+import { convertAllObjProps } from '../common/convert-obj';
+
 /**
   * Convert T from snake_case to camelCase
   * */
@@ -41,18 +43,13 @@ export function snakeToCamelCase<T extends string | Record<PropertyKey, unknown>
   type TRecord = Exclude<T, string>;
   const snakeCasedRecord = target as TRecord;
 
-  return Object.keys(snakeCasedRecord)
-    .reduce((camelCasedRecord, key) => {
-      if (typeof key !== 'string') {
-        camelCasedRecord[key] = snakeCasedRecord[key];
-        return camelCasedRecord;
-      }
-
-      const camelCasedKey = strSnakeToCamelCase(key);
-      camelCasedRecord[camelCasedKey] = snakeCasedRecord[key];
-
-      return camelCasedRecord;
-    }, {} as Record<PropertyKey, unknown>);
+  return convertAllObjProps<
+  TRecord,
+  AllPropertiesSnakeToCamelCase<TRecord>
+  >(
+    snakeCasedRecord,
+    (key) => strSnakeToCamelCase(key),
+  );
 }
 
 export function strSnakeToCamelCase<T extends string>(target: T): SnakeToCamelCase<T> {
