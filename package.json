@@ -1,0 +1,54 @@
+{
+  "name": "basket-case",
+  "version": "0.0.1",
+  "description": "Easy case conversion with strong typing",
+  "homepage": "https://github.com/azvaliev/basket-case#readme",
+  "bugs": {
+    "url": "https://github.com/azvaliev/basket-case/issues",
+    "email": "azat@valievventures.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azvaliev/basket-case.git"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "lint": "eslint . --config .eslintrc.cjs --ext .js,.ts",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui --watch",
+    "test:watch": "vitest --watch",
+    "build": "rm -rf dist && rollup -c"
+  },
+  "keywords": [
+    "camel case",
+    "snake case",
+    "convert case",
+    "pascal case"
+  ],
+  "author": "Azat Valiev <valiev.dev@gmail.com> (https://valiev.dev)",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "@vitest/coverage-c8": "^0.33.0",
+    "@vitest/ui": "^1.3.1",
+    "esbuild": "^0.20.1",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "rollup": "^4.12.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.3.1"
+  },
+  "packageManager": "yarn@3.8.0"
+}
