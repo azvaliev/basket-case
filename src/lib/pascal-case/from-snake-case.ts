@@ -21,14 +21,6 @@ type AllPropertiesSnakeToPascalCase<T extends Record<PropertyKey, unknown>> = {
 /**
   * Convert a string from snake to pascal case
   * Or, if passed an object will convert all property names from snake case to pascal case
-  *
-  * @example
-  * ```
-  * const pascalCaseStr = snakeToPascalCase("foo_bar_bazz"); // FooBarBazz
-  *
-  * const pascalCaseProps = snakeToPascalCase({ created_at: new Date(), updated_at: null });
-  * pascalCaseProps; // { CreatedAt: Date, UpdatedAt: Date | null }
-  * ```
   * */
 export function snakeToPascalCase<T extends string>(target: T): SnakeToPascalCase<T>;
 export function snakeToPascalCase<T extends Record<PropertyKey, unknown>>(

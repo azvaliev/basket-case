@@ -13,14 +13,6 @@ type AllPropertiesCamelToPascalCase<T extends Record<PropertyKey, unknown>> = {
 /**
   * Convert camel case to pascal case
   * Either pass a string or an object, if an object is passed, all property names will be converted
-  *
-  * @example
-  * ```
-  * const pascaled = camelToPascalCase('pascalCase'); // PascalCase
-  *
-  * const pascalStruct = camelToPascalCase({ createdAt: new Date(), updatedAt: null });
-  * pascalStruct; // { CreatedAt: Date, UpdatedAt: Date | null }
-  * ```
   * */
 export function camelToPascalCase<T extends string>(target: T): CamelToPascalCase<T>;
 export function camelToPascalCase<T extends Record<PropertyKey, unknown>>(

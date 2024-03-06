@@ -1,12 +1,9 @@
 import { convertAllObjProps } from '../common/convert-obj';
 
 /**
-  * Convert T from snake_case to camelCase
+  * Convert string from snake_case to camelCase
   * */
 export type SnakeToCamelCase<T extends string> = InnerSnakeToCamelCase<T>;
-/**
-  * Convert all properties of T from snake_case to camelCase
-* */
 type AllPropertiesSnakeToCamelCase<T extends Record<PropertyKey, unknown>> = {
   [K in keyof T as
   K extends string
@@ -18,14 +15,6 @@ type AllPropertiesSnakeToCamelCase<T extends Record<PropertyKey, unknown>> = {
 /**
   * Convert a string from snake to camel case
   * Or, if passed an object will convert all property names from snake case to camel case
-  *
-  * @example
-  * ```
-  * const camelCaseStr = snakeToCamelCase("foo_bar_bazz"); // fooBarBazz
-  *
-  * const camelCaseProps = snakeToCamelCase({ created_at: new Date(), updated_at: null });
-  * camelCaseProps; // { createdAt: Date, updatedAt: Date | null }
-  * ```
   * */
 export function snakeToCamelCase<T extends string>(target: T): SnakeToCamelCase<T>;
 export function snakeToCamelCase<T extends Record<PropertyKey, unknown>>(
