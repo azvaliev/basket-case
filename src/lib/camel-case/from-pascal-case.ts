@@ -16,7 +16,7 @@ type AllPropertiesPascalToCamelCase<T extends Record<PropertyKey, unknown>> = {
   * ```
   * const cameled = pascalToCamelCase('PascalCase'); // pascalCase
   *
-  * const cameledStruct = pascalToCamelCase({ created_at: new Date(), updated_at: null });
+  * const cameledStruct = pascalToCamelCase({ CreatedAt: new Date(), UpdatedAt: null });
   * cameledStruct; // { createdAt: Date, updatedAt: Date | null }
   * ```
   * */
