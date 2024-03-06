@@ -13,11 +13,22 @@ type AllPropertiesSnakeToCamelCase<T extends Record<PropertyKey, unknown>> = {
   ]: T[K];
 };
 
+/**
+  * Convert a string from snake to camel case
+  * Or, if passed an object will convert all property names from snake case to camel case
+  *
+  * @example
+  * ```
+  * const camelCaseStr = snakeToCamelCase("foo_bar_bazz"); // fooBarBazz
+  *
+  * const camelCaseProps = snakeToCamelCase({ created_at: new Date(), updated_at: null });
+  * camelCaseProps; // { createdAt: Date, updatedAt: Date | null }
+  * ```
+  * */
 export function snakeToCamelCase<T extends string>(target: T): SnakeToCamelCase<T>;
 export function snakeToCamelCase<T extends Record<PropertyKey, unknown>>(
   target: T
 ): AllPropertiesSnakeToCamelCase<T>;
-
 export function snakeToCamelCase<T extends string | Record<PropertyKey, unknown>>(
   target: T,
 ) {

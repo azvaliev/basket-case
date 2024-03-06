@@ -8,6 +8,18 @@ type AllPropertiesPascalToCamelCase<T extends Record<PropertyKey, unknown>> = {
   ]: T[K]
 };
 
+/**
+  * Convert pascal case to camel case
+  * Either pass a string or an object, if an object is passed, all property names will be converted
+  *
+  * @example
+  * ```
+  * const cameled = pascalToCamelCase('PascalCase'); // pascalCase
+  *
+  * const cameledStruct = pascalToCamelCase({ created_at: new Date(), updated_at: null });
+  * cameledStruct; // { createdAt: Date, updatedAt: Date | null }
+  * ```
+  * */
 export function pascalToCamelCase<T extends string>(target: T): PascalToCamelCase<T>;
 export function pascalToCamelCase<T extends Record<PropertyKey, unknown>>(
   target: T,
