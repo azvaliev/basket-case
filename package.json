@@ -1,15 +1,15 @@
 {
-  "name": "basket-case",
-  "version": "0.0.2",
+  "name": "cold-case",
+  "version": "0.0.1",
   "description": "Easy case conversion with strong typing",
-  "homepage": "https://github.com/azvaliev/basket-case#readme",
+  "homepage": "https://github.com/azvaliev/cold-case#readme",
   "bugs": {
-    "url": "https://github.com/azvaliev/basket-case/issues",
+    "url": "https://github.com/azvaliev/cold-case/issues",
     "email": "azat@valievventures.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/azvaliev/basket-case.git"
+    "url": "git+https://github.com/azvaliev/cold-case.git"
   },
   "type": "module",
   "main": "dist/index.js",
