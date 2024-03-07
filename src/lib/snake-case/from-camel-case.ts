@@ -44,9 +44,14 @@ export function strCamelToSnakeCase<T extends string>(target: T): CamelToSnakeCa
   for (let idx = 0; idx < target.length; idx += 1) {
     const currentChar = target[idx]!;
 
-    if (currentChar.toUpperCase() === currentChar) {
+    const charIsUppercaseLetter = (currentChar.toUpperCase() === currentChar)
+      // If the character is lowercased and still the same then it's a special character
+      && (currentChar.toLowerCase() !== currentChar);
+    if (charIsUppercaseLetter) {
       // Current character is uppercase, so we lowercase it and prefix an _
       snakeCasedTarget += `_${currentChar.toLowerCase()}`;
+    } else {
+      snakeCasedTarget += currentChar;
     }
   }
 
@@ -58,16 +63,20 @@ type InnerCamelCaseToSnakeCase<
   LeadingString extends string = '',
 > =
   // Is there another capital letter in T?
-  T extends `${infer Head}${CapitalLetter}${infer _Tail}`
+  T extends `${infer Head}${CapitalLetter}${string}`
     // If so, get Tail which is the capital letter until end of string
-    ? T extends `${Head}${infer Tail}`
-      ? InnerCamelCaseToSnakeCase<
-      // Remove the capital letter from tail
-      Uncapitalize<Tail>,
+    ? T extends `${
+        Head extends Lowercase<Head> ? Head : never // tbh not entirely confident in how this works but it does
+    }${infer Tail}`
+      ? Head extends Lowercase<Head> // Head should not have any capitals we want tail to be next capital
+        ? InnerCamelCaseToSnakeCase<
+        // Remove the capital letter from tail
+        Uncapitalize<Tail>,
             // Insert an _
             `${LeadingString}${Head}_`
-      >
-    // This should never happen
+        >
+        : never
+        // This should never happen
       : `${LeadingString}${T}`
     // Otherwise, since there's no capital letters left we're done parsing
     : `${LeadingString}${T}`;
