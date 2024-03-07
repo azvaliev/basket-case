@@ -18,10 +18,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'yarn'
       
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          yarn set version stable
           
       - name: Install dependencies
         run: yarn install --immutable
@@ -42,7 +43,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'yarn'
       
       - name: Enable Corepack
         run: corepack enable
