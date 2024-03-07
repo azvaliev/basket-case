@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   test: {
@@ -6,5 +6,12 @@ export default defineConfig({
     reporters: ['html', 'verbose'],
     watch: false,
     include: ['**/*.test.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    coverage: {
+      exclude: [
+        ...(configDefaults.coverage.exclude || []),
+        'html',
+        'dist',
+      ],
+    },
   },
 });
