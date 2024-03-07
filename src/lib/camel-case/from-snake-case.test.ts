@@ -11,6 +11,11 @@ describe.concurrent('Convert from snake case to camel case', () => {
     typeof recieved,
     typeof expected
     >>;
+    // @ts-expect-error this should error because string is too broad
+    type _RecievedStrictType = Expect<Equals<
+    typeof recieved,
+    string
+    >>;
     expect(recieved).toEqual(expected);
   });
 
@@ -30,6 +35,11 @@ describe.concurrent('Convert from snake case to camel case', () => {
     type _RecivedCorrectType = Expect<Equals<
     typeof recieved,
     typeof expected
+    >>;
+    // @ts-expect-error this should error because string is too broad
+    type _RecievedStrictType = Expect<Equals<
+    keyof typeof recieved,
+    string
     >>;
     expect(recieved).toStrictEqual(expected);
   });
