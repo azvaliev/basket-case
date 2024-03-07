@@ -43,5 +43,4 @@ describe.concurrent('Convert from snake case to camel case', () => {
     >>;
     expect(recieved).toStrictEqual(expected);
   });
-
 });

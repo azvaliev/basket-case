@@ -58,6 +58,8 @@ export function strCamelToSnakeCase<T extends string>(target: T): CamelToSnakeCa
   return snakeCasedTarget as CamelToSnakeCase<T>;
 }
 
+// Disabling because this type needs comments lol
+/* eslint-disable max-len */
 type InnerCamelCaseToSnakeCase<
   T extends string,
   LeadingString extends string = '',

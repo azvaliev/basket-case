@@ -32,7 +32,6 @@ describe.concurrent('Convert from pascal case to camel case', () => {
       camelCasedProp: null,
     };
 
-
     type _RecivedCorrectType = Expect<Equals<
     typeof recieved,
     typeof expected
