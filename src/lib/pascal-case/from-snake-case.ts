@@ -13,7 +13,7 @@ export type SnakeToPascalCase<T extends string> = Capitalize<SnakeToCamelCase<T>
 type AllPropertiesSnakeToPascalCase<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
-    ? SnakeToCamelCase<K>
+    ? SnakeToPascalCase<K>
     : K
   ]: T[K]
 };
