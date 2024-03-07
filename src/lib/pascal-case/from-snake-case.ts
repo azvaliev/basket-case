@@ -1,5 +1,4 @@
-import type { SnakeToCamelCase } from '../camel-case';
-import { strSnakeToCamelCase } from '../camel-case/from-snake-case';
+import { type SnakeToCamelCase, strSnakeToCamelCase } from '../camel-case/from-snake-case';
 import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 import { strCamelToPascalCase } from './from-camel-case';
 

@@ -1,3 +1,3 @@
 /* v8 ignore start */
-export { snakeToCamelCase, type SnakeToCamelCase } from './from-snake-case';
-export { pascalToCamelCase, type PascalToCamelCase } from './from-pascal-case';
+export { snakeToCamelCase } from './from-snake-case';
+export { pascalToCamelCase } from './from-pascal-case';
