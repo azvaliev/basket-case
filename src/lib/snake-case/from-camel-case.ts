@@ -1,11 +1,11 @@
-import { convertAllObjProps } from '../common/convert-obj';
+import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 
 /**
   * Convert string from camel to snake case.
   * */
 export type CamelToSnakeCase<T extends string> = InnerCamelCaseToSnakeCase<T>;
 
-type AllPropertiesCamelToSnakeCase<T extends Record<PropertyKey, unknown>> = {
+type AllPropertiesCamelToSnakeCase<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? CamelToSnakeCase<K>
@@ -18,10 +18,10 @@ type AllPropertiesCamelToSnakeCase<T extends Record<PropertyKey, unknown>> = {
   * Or, if passed an object will convert all property names from camel case to snake case
   * */
 export function camelToSnakeCase<T extends string>(target: T): CamelToSnakeCase<T>;
-export function camelToSnakeCase<T extends Record<PropertyKey, unknown>>(
+export function camelToSnakeCase<T extends Record<ObjectKey, unknown>>(
   target: T,
 ): AllPropertiesCamelToSnakeCase<T>;
-export function camelToSnakeCase<T extends string | Record<PropertyKey, unknown>>(
+export function camelToSnakeCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
   if (typeof target === 'string') {

@@ -1,8 +1,8 @@
-import { convertAllObjProps } from '../common/convert-obj';
+import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 
 export type CamelToPascalCase<T extends string> = Capitalize<T>;
 
-type AllPropertiesCamelToPascalCase<T extends Record<PropertyKey, unknown>> = {
+type AllPropertiesCamelToPascalCase<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? CamelToPascalCase<K>
@@ -15,10 +15,10 @@ type AllPropertiesCamelToPascalCase<T extends Record<PropertyKey, unknown>> = {
   * Either pass a string or an object, if an object is passed, all property names will be converted
   * */
 export function camelToPascalCase<T extends string>(target: T): CamelToPascalCase<T>;
-export function camelToPascalCase<T extends Record<PropertyKey, unknown>>(
+export function camelToPascalCase<T extends Record<ObjectKey, unknown>>(
   target: T,
 ): AllPropertiesCamelToPascalCase<T>;
-export function camelToPascalCase<T extends string | Record<PropertyKey, unknown>>(
+export function camelToPascalCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
   if (typeof target === 'string') {

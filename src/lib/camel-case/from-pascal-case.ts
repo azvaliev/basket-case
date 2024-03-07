@@ -1,11 +1,11 @@
-import { convertAllObjProps } from '../common/convert-obj';
+import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 
 /**
   * Literally just lowercase the first letter to convert from pascal to camel case
   * */
 export type PascalToCamelCase<T extends string> = Uncapitalize<T>;
 
-type AllPropertiesPascalToCamelCase<T extends Record<PropertyKey, unknown>> = {
+type AllPropertiesPascalToCamelCase<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? PascalToCamelCase<K>
@@ -18,10 +18,10 @@ type AllPropertiesPascalToCamelCase<T extends Record<PropertyKey, unknown>> = {
   * Either pass a string or an object, if an object is passed, all property names will be converted
   * */
 export function pascalToCamelCase<T extends string>(target: T): PascalToCamelCase<T>;
-export function pascalToCamelCase<T extends Record<PropertyKey, unknown>>(
+export function pascalToCamelCase<T extends Record<ObjectKey, unknown>>(
   target: T,
 ): AllPropertiesPascalToCamelCase<T>;
-export function pascalToCamelCase<T extends string | Record<PropertyKey, unknown>>(
+export function pascalToCamelCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
   if (typeof target === 'string') {

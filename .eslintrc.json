@@ -53,6 +53,12 @@
         "varsIgnorePattern": "^_",
         "argsIgnorePattern": "^_"
       }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "leadingUnderscore": "allow"
+      }
     ]
   }
 }

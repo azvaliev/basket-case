@@ -22,3 +22,5 @@ export function convertAllObjProps<
       return newCasedTarget;
     }, {} as TTransformedRecord);
 }
+
+export type ObjectKey = string | symbol;

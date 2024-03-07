@@ -1,6 +1,6 @@
 import type { SnakeToCamelCase } from '../camel-case';
 import { strSnakeToCamelCase } from '../camel-case/from-snake-case';
-import { convertAllObjProps } from '../common/convert-obj';
+import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 import { strCamelToPascalCase } from './from-camel-case';
 
 /**
@@ -10,7 +10,7 @@ import { strCamelToPascalCase } from './from-camel-case';
   * */
 export type SnakeToPascalCase<T extends string> = Capitalize<SnakeToCamelCase<T>>;
 
-type AllPropertiesSnakeToPascalCase<T extends Record<PropertyKey, unknown>> = {
+type AllPropertiesSnakeToPascalCase<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? SnakeToCamelCase<K>
@@ -23,10 +23,10 @@ type AllPropertiesSnakeToPascalCase<T extends Record<PropertyKey, unknown>> = {
   * Or, if passed an object will convert all property names from snake case to pascal case
   * */
 export function snakeToPascalCase<T extends string>(target: T): SnakeToPascalCase<T>;
-export function snakeToPascalCase<T extends Record<PropertyKey, unknown>>(
+export function snakeToPascalCase<T extends Record<ObjectKey, unknown>>(
   target: T
 ): AllPropertiesSnakeToPascalCase<T>;
-export function snakeToPascalCase<T extends string | Record<PropertyKey, unknown>>(
+export function snakeToPascalCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
   if (typeof target === 'string') {
