@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { Equals, Expect } from '../common/test-type-helpers';
+import type { Equals, Expect } from '../common/test-type-helpers';
 import { snakeToCamelCase } from './from-snake-case';
 
 describe.concurrent('Convert from snake case to camel case', () => {
