@@ -19,7 +19,8 @@
     "/dist"
   ],
   "scripts": {
-    "lint": "eslint . --config .eslintrc.cjs --ext .js,.ts",
+    "lint": "eslint . --config .eslintrc.json --ext .js,.ts",
+    "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui --watch",
