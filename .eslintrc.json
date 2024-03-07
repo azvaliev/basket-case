@@ -57,7 +57,9 @@
     "@typescript-eslint/naming-convention": [
       "error",
       {
-        "leadingUnderscore": "allow"
+        "leadingUnderscore": "allow",
+        "format": ["PascalCase"],
+        "selector": "typeLike"
       }
     ]
   }
