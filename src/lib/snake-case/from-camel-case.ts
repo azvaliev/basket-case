@@ -5,7 +5,7 @@ import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
   * */
 export type CamelToSnakeCase<T extends string> = InnerCamelCaseToSnakeCase<T>;
 
-type AllPropertiesCamelToSnakeCase<T extends Record<ObjectKey, unknown>> = {
+export type CamelToSnakeCaseProps<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? CamelToSnakeCase<K>
@@ -20,7 +20,7 @@ type AllPropertiesCamelToSnakeCase<T extends Record<ObjectKey, unknown>> = {
 export function camelToSnakeCase<T extends string>(target: T): CamelToSnakeCase<T>;
 export function camelToSnakeCase<T extends Record<ObjectKey, unknown>>(
   target: T,
-): AllPropertiesCamelToSnakeCase<T>;
+): CamelToSnakeCaseProps<T>;
 export function camelToSnakeCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
@@ -31,7 +31,7 @@ export function camelToSnakeCase<T extends string | Record<ObjectKey, unknown>>(
   const targetRecord = target as Exclude<T, string>;
   return convertAllObjProps<
   typeof targetRecord,
-  AllPropertiesCamelToSnakeCase<typeof targetRecord>
+  CamelToSnakeCaseProps<typeof targetRecord>
   >(
     targetRecord,
     (key) => strCamelToSnakeCase(key),

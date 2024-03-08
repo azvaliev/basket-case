@@ -9,7 +9,7 @@ import { type CamelToSnakeCase, strCamelToSnakeCase } from './from-camel-case';
   * */
 export type PascalToSnakeCase<T extends string> = CamelToSnakeCase<Uncapitalize<T>>;
 
-type AllPropertiesPascalToSnakeCase<T extends Record<ObjectKey, unknown>> = {
+export type PascalToSnakeCaseProps<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? PascalToSnakeCase<K>
@@ -24,7 +24,7 @@ type AllPropertiesPascalToSnakeCase<T extends Record<ObjectKey, unknown>> = {
 export function pascalToSnakeCase<T extends string>(target: T): PascalToSnakeCase<T>;
 export function pascalToSnakeCase<T extends Record<ObjectKey, unknown>>(
   target: T,
-): AllPropertiesPascalToSnakeCase<T>;
+): PascalToSnakeCaseProps<T>;
 export function pascalToSnakeCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
@@ -35,7 +35,7 @@ export function pascalToSnakeCase<T extends string | Record<ObjectKey, unknown>>
   const targetRecord = target as Exclude<T, string>;
   return convertAllObjProps<
   typeof targetRecord,
-  AllPropertiesPascalToSnakeCase<typeof targetRecord>
+  PascalToSnakeCaseProps<typeof targetRecord>
   >(
     targetRecord,
     strPascalToSnakeCase,

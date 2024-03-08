@@ -8,7 +8,7 @@ on:
 
 jobs:
   lint-typecheck:
-    name: Run
+    name: Lint & check types
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,7 +33,7 @@ jobs:
       - name: Run ESLint
         run: yarn lint
   test:
-    name: Run
+    name: Run tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

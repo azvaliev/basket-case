@@ -2,7 +2,7 @@ import { type ObjectKey, convertAllObjProps } from '../common/convert-obj';
 
 export type CamelToPascalCase<T extends string> = Capitalize<T>;
 
-type AllPropertiesCamelToPascalCase<T extends Record<ObjectKey, unknown>> = {
+export type CamelToPascalCaseProps<T extends Record<ObjectKey, unknown>> = {
   [K in keyof T as
   K extends string
     ? CamelToPascalCase<K>
@@ -17,7 +17,7 @@ type AllPropertiesCamelToPascalCase<T extends Record<ObjectKey, unknown>> = {
 export function camelToPascalCase<T extends string>(target: T): CamelToPascalCase<T>;
 export function camelToPascalCase<T extends Record<ObjectKey, unknown>>(
   target: T,
-): AllPropertiesCamelToPascalCase<T>;
+): CamelToPascalCaseProps<T>;
 export function camelToPascalCase<T extends string | Record<ObjectKey, unknown>>(
   target: T,
 ) {
@@ -28,7 +28,7 @@ export function camelToPascalCase<T extends string | Record<ObjectKey, unknown>>
   const targetRecord = target as Exclude<T, string>;
   return convertAllObjProps<
   typeof targetRecord,
-  AllPropertiesCamelToPascalCase<typeof targetRecord>
+  CamelToPascalCaseProps<typeof targetRecord>
   >(
     targetRecord,
     (key) => strCamelToPascalCase(key),
