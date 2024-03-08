@@ -1,6 +1,6 @@
 {
   "name": "cold-case",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Easy case conversion with strong typing",
   "homepage": "https://github.com/azvaliev/cold-case#readme",
   "bugs": {
