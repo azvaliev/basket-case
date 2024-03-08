@@ -25,7 +25,8 @@
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui --watch",
     "test:watch": "vitest --watch",
-    "build": "rm -rf dist && rollup -c"
+    "build": "rm -rf dist && rollup -c",
+    "gen:docs": "typedoc ./src/index.ts --out docs --cleanOutputDir --githubPages --htmlLang en --darkHighlightTheme poimandres --lightHighlightTheme rose-pine-dawn"
   },
   "keywords": [
     "camel case",

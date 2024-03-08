@@ -12,7 +12,7 @@ All conversion functions & types have 95%+ test coverage.
 import { snakeToCamelCase } from 'cold-case';
 
 const camelCased = snakeToCamelCase({ created_at: new Date(), updated_at: null, camelCasedProp: 'string' });
-//     ^?  { createdAt: Date | null, updatedAt: Date | null, camelCasedProp: string }
+//    ^?  { createdAt: Date, updatedAt: Date | null, camelCasedProp: string }
 ```
 
 Supports converting to and from
