@@ -1,6 +1,6 @@
 # Cold Case
 
-![Documentation](https://img.shields.io/badge/documentation-typedoc-blue?link=https%3A%2F%2Fazvaliev.github.io%2Fcold-case%2F)
+[![Documentation](https://img.shields.io/badge/documentation-typedoc-blue?link=https%3A%2F%2Fazvaliev.github.io%2Fcold-case%2F)](https://azvaliev.github.io/cold-case/)
 ![NPM License](https://img.shields.io/npm/l/cold-case)
 ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/azvaliev/cold-case/.github%2Fworkflows%2Flint-test.yml?label=tests)
 ![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/cold-case)
